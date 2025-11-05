@@ -1,5 +1,9 @@
 /// <reference types="vite/client" />
 import { useEffect, useMemo, useState } from 'react';
+import { TrendAnalysis } from './TrendAnalysis';
+import { DataVisualization } from './DataVisualization';
+import { Reports } from './Reports';
+import { UserManagement } from './UserManagement';
 
 const api = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
 
@@ -7,6 +11,10 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
   const [stats, setStats] = useState<any>(null);
   const [showUpload, setShowUpload] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showTrends, setShowTrends] = useState(false);
+  const [showVisualization, setShowVisualization] = useState(false);
+  const [showReports, setShowReports] = useState(false);
+  const [showUserManagement, setShowUserManagement] = useState(false);
   const [me, setMe] = useState<{ email: string; name?: string } | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [listModal, setListModal] = useState<null | { type: 'papers' | 'authors' | 'keywords' }>(null);
@@ -26,6 +34,126 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
     }
   }, []);
 
+  if (showTrends) {
+    return (
+      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
+        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
+            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
+          </div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button onClick={() => setShowTrends(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
+            {me && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
+                <div style={{ fontSize: 13 }}>{me.email}</div>
+              </div>
+            )}
+            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+          </div>
+        </header>
+        <TrendAnalysis />
+      </div>
+    );
+  }
+
+  if (showVisualization) {
+    return (
+      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
+        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
+            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
+          </div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button onClick={() => setShowVisualization(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
+            {me && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
+                <div style={{ fontSize: 13 }}>{me.email}</div>
+              </div>
+            )}
+            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+          </div>
+        </header>
+        <DataVisualization />
+      </div>
+    );
+  }
+
+  if (showReports) {
+    return (
+      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
+        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
+            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
+          </div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button onClick={() => setShowReports(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
+            {me && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
+                <div style={{ fontSize: 13 }}>{me.email}</div>
+              </div>
+            )}
+            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+          </div>
+        </header>
+        <Reports />
+      </div>
+    );
+  }
+
+  if (showUserManagement) {
+    return (
+      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
+        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
+            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
+          </div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button onClick={() => setShowUserManagement(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
+            {me && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
+                <div style={{ fontSize: 13 }}>{me.email}</div>
+              </div>
+            )}
+            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+          </div>
+        </header>
+        <UserManagement />
+      </div>
+    );
+  }
+
+  if (showReports) {
+    return (
+      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
+        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
+            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
+          </div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button onClick={() => setShowReports(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
+            {me && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
+                <div style={{ fontSize: 13 }}>{me.email}</div>
+              </div>
+            )}
+            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+          </div>
+        </header>
+        <Reports />
+      </div>
+    );
+  }
+
   return (
     <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
       <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -44,10 +172,17 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
         </div>
       </header>
       <main style={{ padding: 24 }}>
-        <h1 style={{ margin: '16px 0 8px' }}>Welcome to Trendlytic</h1>
-        <p style={{ color: '#6b7280', marginTop: 0 }}>Select a module to start analyzing your research data</p>
+        <style>{`
+          .module-grid, .stat-grid { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 16px; }
+          @media (max-width: 1100px) { .module-grid, .stat-grid { grid-template-columns: repeat(2, minmax(200px, 1fr)); } }
+          @media (max-width: 640px) { .module-grid, .stat-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); } }
+        `}</style>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 16, maxWidth: 1100 }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+          <h1 style={{ margin: '16px 0 8px' }}>Welcome to Trendlytic</h1>
+          <p style={{ color: '#6b7280', marginTop: 0 }}>Select a module to start analyzing your research data</p>
+
+          <div className="module-grid">
           {moduleCards.map((m) => (
             <ModuleCard
               key={m.title}
@@ -57,6 +192,14 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
               onPrimary={
                 m.title === 'Data Ingestion'
                   ? () => setShowUpload(true)
+                  : m.title === 'Trend Analysis'
+                  ? () => setShowTrends(true)
+                  : m.title === 'Visualization'
+                  ? () => setShowVisualization(true)
+                  : m.title === 'Reporting'
+                  ? () => setShowReports(true)
+                  : m.title === 'User Management'
+                  ? () => setShowUserManagement(true)
                   : m.title === 'Setting'
                   ? () => setShowSettings(true)
                   : undefined
@@ -64,12 +207,13 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
               primaryText={m.title === 'Data Ingestion' ? 'Upload File' : m.title === 'Setting' ? 'Open Settings' : 'Open Module'}
             />
           ))}
-        </div>
+          </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 16, maxWidth: 1100, marginTop: 24 }}>
+          <div className="stat-grid" style={{ marginTop: 24 }}>
           <StatCard label="Total Papers" value={stats?.statistics?.total_papers ?? '—'} onClickValue={() => setListModal({ type: 'papers' })} />
           <StatCard label="Total Authors" value={stats?.statistics?.total_authors ?? '—'} onClickValue={() => setListModal({ type: 'authors' })} />
           <StatCard label="Total Keywords" value={stats?.statistics?.total_keywords ?? '—'} onClickValue={() => setListModal({ type: 'keywords' })} />
+          </div>
         </div>
       </main>
 
@@ -115,7 +259,7 @@ function ModuleCard({ title, subtitle, color, onPrimary, primaryText }: { title:
       <div style={{ width: 44, height: 44, borderRadius: 12, background: color, marginBottom: 12 }} />
       <div style={{ fontWeight: 600 }}>{title}</div>
       <div style={{ color: '#6b7280', fontSize: 13 }}>{subtitle}</div>
-      <button onClick={onPrimary} style={{ marginTop: 12, width: '100%', padding: '8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#f9fafb' }}>{primaryText ?? 'Open Module'}</button>
+      <button onClick={onPrimary} style={{ marginTop: 12, width: '100%', padding: '8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#f9fafb', cursor: 'pointer' }}>{primaryText ?? 'Open Module'}</button>
     </div>
   );
 }
@@ -257,9 +401,11 @@ function SettingsModal({ onClose, onCleared }: { onClose: () => void; onCleared:
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  async function clearTarget(target: 'papers' | 'authors' | 'keywords' | 'all') {
+  async function clearTarget(target: 'papers' | 'authors' | 'keywords' | 'trends' | 'all') {
     const confirmMsg = target === 'all'
-      ? 'This will delete ALL papers, authors, and keywords. This action cannot be undone. Continue?'
+      ? 'This will delete ALL papers, authors, keywords, and trends. This action cannot be undone. Continue?'
+      : target === 'trends'
+      ? 'This will delete all trend data. Continue?'
       : `This will delete all ${target}. This action cannot be undone. Continue?`;
     if (!window.confirm(confirmMsg)) return;
     setError(null);
@@ -297,7 +443,10 @@ function SettingsModal({ onClose, onCleared }: { onClose: () => void; onCleared:
           <button onClick={() => clearTarget('keywords')} disabled={!!loading} style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #e5e7eb', background: 'white' }}>
             {loading === 'keywords' ? 'Clearing Keywords…' : 'Clear Keywords'}
           </button>
-          <button onClick={() => clearTarget('all')} disabled={!!loading} style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #fecaca', background: '#fef2f2', color: '#991b1b' }}>
+          <button onClick={() => clearTarget('trends')} disabled={!!loading} style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #e5e7eb', background: 'white' }}>
+            {loading === 'trends' ? 'Clearing Trends…' : 'Clear Trends'}
+          </button>
+          <button onClick={() => clearTarget('all')} disabled={!!loading} style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid #fecaca', background: '#fef2f2', color: '#991b1b', gridColumn: '1 / -1' }}>
             {loading === 'all' ? 'Clearing EVERYTHING…' : 'Clear All (Danger)'}
           </button>
         </div>

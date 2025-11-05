@@ -37,6 +37,15 @@ dashboardRouter.get('/', async (_req, res) => {
     .limit(10)
     .lean();
 
+  // Get unique authors per year
+  const authors_per_year = await PaperModel.aggregate([
+    { $unwind: '$author_ids' },
+    { $group: { _id: { year: '$year', author: '$author_ids' } } },
+    { $group: { _id: '$_id.year', count: { $sum: 1 } } },
+    { $project: { _id: 0, year: '$_id', count: 1 } },
+    { $sort: { year: 1 } }
+  ]);
+
   res.json({
     statistics: {
       total_papers,
@@ -44,7 +53,8 @@ dashboardRouter.get('/', async (_req, res) => {
       total_keywords,
       total_conferences,
       year_range,
-      papers_per_year: yearAgg
+      papers_per_year: yearAgg,
+      authors_per_year: authors_per_year
     },
     recent_activity: recent_papers,
     top_keywords,

@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/api/client.ts","./src/components/conferenceslist.tsx","./src/components/dashboard.tsx","./src/components/datavisualization.tsx","./src/components/trendanalysis.tsx"],"version":"5.9.3"}

@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const conferences_1 = require("./conferences");
+const dashboard_1 = require("./dashboard");
+const auth_1 = require("./auth");
+const import_1 = require("./import");
+const admin_1 = require("./admin");
+const trends_1 = require("./trends");
+const reports_1 = require("./reports");
+exports.router = (0, express_1.Router)();
+exports.router.get('/health', (_req, res) => {
+    res.json({ ok: true, service: 'trendlytic-backend' });
+});
+exports.router.use('/api/conferences', conferences_1.conferencesRouter);
+exports.router.use('/api/dashboard', dashboard_1.dashboardRouter);
+exports.router.use('/api/auth', auth_1.authRouter);
+exports.router.use('/api/import', import_1.importRouter);
+exports.router.use('/api/admin', admin_1.adminRouter);
+exports.router.use('/api/trends', trends_1.trendsRouter);
+exports.router.use('/api/reports', reports_1.reportsRouter);
