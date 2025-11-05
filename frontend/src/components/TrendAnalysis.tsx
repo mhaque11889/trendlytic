@@ -123,26 +123,19 @@ export function TrendAnalysis() {
   );
 
   return (
-    <div style={{ padding: 24, background: '#f8fafc', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 py-12 px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
+        <div className="mb-12 flex justify-between items-start">
           <div>
-            <h1 style={{ margin: '0 0 8px', fontSize: 28, fontWeight: 600 }}>Trend Analysis</h1>
-            <p style={{ color: '#6b7280', margin: 0 }}>Identify patterns and emerging trends in your research</p>
+            <h1 className="text-5xl font-bold mb-3">
+              <span className="bg-gradient-to-r from-pink-600 to-yellow-500 bg-clip-text text-transparent">Trend Analysis</span>
+            </h1>
+            <p className="text-lg text-gray-600">Identify patterns and emerging trends in your research data</p>
           </div>
           <button
             onClick={() => setShowPopulating(true)}
-            style={{
-              padding: '8px 16px',
-              background: '#3b82f6',
-              color: 'white',
-              border: 'none',
-              borderRadius: 8,
-              cursor: 'pointer',
-              fontSize: 14,
-              fontWeight: 500
-            }}
+            className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
           >
             + Add Trend Data
           </button>
@@ -150,52 +143,24 @@ export function TrendAnalysis() {
 
         {/* Populate Modal */}
         {showPopulating && (
-          <div style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.4)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000
-          }}>
-            <div style={{
-              background: 'white',
-              padding: 24,
-              borderRadius: 12,
-              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-              maxWidth: 400
-            }}>
-              <h3 style={{ marginTop: 0 }}>Populate Trend Data</h3>
-              <p style={{ color: '#6b7280' }}>
+          <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full border-2 border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Populate Trend Data</h3>
+              <p className="text-gray-600 mb-6">
                 This will analyze all imported papers and populate keyword trends by year. This may take a moment.
               </p>
-              <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+              <div className="flex gap-4 justify-end">
                 <button
                   onClick={() => setShowPopulating(false)}
                   disabled={populateLoading}
-                  style={{
-                    padding: '8px 12px',
-                    border: '1px solid #e5e7eb',
-                    background: 'white',
-                    borderRadius: 8,
-                    cursor: 'pointer'
-                  }}
+                  className="px-4 py-2 border-2 border-gray-200 text-gray-900 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300 disabled:opacity-50"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handlePopulateTrends}
                   disabled={populateLoading}
-                  style={{
-                    padding: '8px 12px',
-                    background: '#3b82f6',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: 8,
-                    cursor: populateLoading ? 'not-allowed' : 'pointer',
-                    opacity: populateLoading ? 0.6 : 1
-                  }}
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg font-semibold transition-all duration-300 disabled:opacity-50"
                 >
                   {populateLoading ? 'Populating...' : 'Populate Now'}
                 </button>
@@ -205,79 +170,52 @@ export function TrendAnalysis() {
         )}
 
         {/* Filters */}
-        <div style={{
-          background: 'white',
-          padding: 16,
-          borderRadius: 12,
-          border: '1px solid #e5e7eb',
-          marginBottom: 24,
-          display: 'flex',
-          gap: 16,
-          alignItems: 'flex-end'
-        }}>
-          <div>
-            <label style={{ display: 'block', fontSize: 12, color: '#6b7280', marginBottom: 4 }}>
-              Start Year
-            </label>
+        <div className="bg-white rounded-2xl border-2 border-gray-100 shadow-sm p-6 mb-8 flex flex-col md:flex-row gap-6 items-end">
+          <div className="flex-1">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Start Year</label>
             <select
               value={startYear}
               onChange={e => setStartYear(parseInt(e.target.value))}
-              style={{
-                padding: '8px 12px',
-                borderRadius: 6,
-                border: '1px solid #d1d5db',
-                fontSize: 14,
-                fontFamily: 'inherit'
-              }}
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg font-medium focus:outline-none focus:border-pink-500 transition-colors"
             >
               {years?.available_years.map(y => (
                 <option key={y} value={y}>{y}</option>
               ))}
             </select>
           </div>
-          <div>
-            <label style={{ display: 'block', fontSize: 12, color: '#6b7280', marginBottom: 4 }}>
-              End Year
-            </label>
+          <div className="flex-1">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">End Year</label>
             <select
               value={endYear}
               onChange={e => setEndYear(parseInt(e.target.value))}
-              style={{
-                padding: '8px 12px',
-                borderRadius: 6,
-                border: '1px solid #d1d5db',
-                fontSize: 14,
-                fontFamily: 'inherit'
-              }}
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg font-medium focus:outline-none focus:border-pink-500 transition-colors"
             >
               {years?.available_years.map(y => (
                 <option key={y} value={y}>{y}</option>
               ))}
             </select>
           </div>
-          <div style={{ flex: 1 }} />
-          <div style={{ fontSize: 12, color: '#6b7280' }}>
-            {loading ? 'Loading...' : `${insights?.total_data_points || 0} data points`}
+          <div className="flex-1 text-right">
+            <div className="text-sm font-semibold text-gray-700">Data Points</div>
+            <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text">
+              {loading ? '...' : `${insights?.total_data_points || 0}`}
+            </div>
           </div>
         </div>
 
         {loading ? (
-          <div style={{ textAlign: 'center', padding: 40, color: '#6b7280' }}>
-            Loading trends...
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <div className="inline-block w-12 h-12 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin mb-4"></div>
+              <p className="text-gray-600 font-semibold">Loading trends...</p>
+            </div>
           </div>
         ) : insights && insights.total_topics === 0 ? (
-          <div style={{
-            background: 'white',
-            padding: 40,
-            borderRadius: 12,
-            border: '1px solid #e5e7eb',
-            textAlign: 'center',
-            color: '#6b7280'
-          }}>
-            <p>No trend data yet. Import papers and click "Add Trend Data" to get started.</p>
+          <div className="bg-white rounded-2xl border-2 border-dashed border-gray-300 p-16 text-center">
+            <p className="text-lg text-gray-600">No trend data yet. Import papers and click <span className="font-semibold">"Add Trend Data"</span> to get started.</p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="grid grid-cols-1 gap-8">
             {/* Main Chart Area */}
             <div style={{ gridColumn: '1 / -1' }}>
               <div style={{

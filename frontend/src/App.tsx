@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ConferencesList } from './components/ConferencesList';
 import { Dashboard } from './components/Dashboard';
+import { LandingPage } from './components/LandingPage';
 
 export function App() {
   const [apiStatus, setApiStatus] = useState<string>('checking...');
@@ -21,49 +22,8 @@ export function App() {
   }
 
   return (
-    <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <header style={{ padding: '16px 24px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-          <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <span style={{ fontSize: 12, color: apiStatus === 'online' ? '#10b981' : '#ef4444' }}>API: {apiStatus}</span>
-          <button onClick={() => setShowLogin(true)} style={{ padding: '8px 14px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>
-            Login
-          </button>
-        </div>
-      </header>
-      <main style={{ flex: 1 }}>
-        <section style={{ padding: '56px 24px', background: 'linear-gradient(180deg,#f8fafc,#ffffff)' }}>
-          <div style={{ maxWidth: 960, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr', gap: 24 }}>
-            <div>
-              <h1 style={{ fontSize: 36, margin: 0 }}>Manage, Analyze, and Visualize Conference Papers</h1>
-              <p style={{ color: '#4b5563', marginTop: 12 }}>Keyword trends, authors, conferences, and more — all in one place.</p>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 16 }}>
-              <div style={{ padding: 16, border: '1px solid #e5e7eb', borderRadius: 12 }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>Papers</div>
-                <div style={{ fontSize: 20, fontWeight: 600 }}>—</div>
-              </div>
-              <div style={{ padding: 16, border: '1px solid #e5e7eb', borderRadius: 12 }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>Authors</div>
-                <div style={{ fontSize: 20, fontWeight: 600 }}>—</div>
-              </div>
-              <div style={{ padding: 16, border: '1px solid #e5e7eb', borderRadius: 12 }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>Keywords</div>
-                <div style={{ fontSize: 20, fontWeight: 600 }}>—</div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section style={{ padding: '24px' }}>
-          <div style={{ maxWidth: 960, margin: '0 auto' }}>
-            <ConferencesList />
-          </div>
-        </section>
-      </main>
-
+    <div>
+      <LandingPage onLogin={() => setShowLogin(true)} />
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     </div>
   );
@@ -100,8 +60,8 @@ function LoginModal({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-      <div style={{ background: 'white', padding: 24, borderRadius: 12, width: 360, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, zIndex: 9999 }}>
+      <div style={{ background: 'white', padding: 24, borderRadius: 12, width: 360, boxShadow: '0 10px 30px rgba(0,0,0,0.1)', position: 'relative', zIndex: 10000 }}>
         <h3 style={{ marginTop: 0 }}>Login</h3>
         <div style={{ display: 'grid', gap: 12 }}>
           <label>

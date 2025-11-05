@@ -36,21 +36,34 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (showTrends) {
     return (
-      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
-        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-          </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <button onClick={() => setShowTrends(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
-            {me && (
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
-                <div style={{ fontSize: 13 }}>{me.email}</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-yellow-400 flex items-center justify-center shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Trendlytic</span>
               </div>
-            )}
-            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+              <div className="flex gap-4 items-center">
+                <button onClick={() => setShowTrends(false)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-all duration-300">
+                  ← Back
+                </button>
+                {me && (
+                  <div className="text-right pr-4 border-r border-gray-200">
+                    <div className="text-sm font-semibold text-gray-900">{me.name || 'Administrator'}</div>
+                    <div className="text-xs text-gray-500">{me.email}</div>
+                  </div>
+                )}
+                <button onClick={onLogout} className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
         </header>
         <TrendAnalysis />
@@ -60,21 +73,34 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (showVisualization) {
     return (
-      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
-        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-          </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <button onClick={() => setShowVisualization(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
-            {me && (
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
-                <div style={{ fontSize: 13 }}>{me.email}</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-yellow-400 flex items-center justify-center shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Trendlytic</span>
               </div>
-            )}
-            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+              <div className="flex gap-4 items-center">
+                <button onClick={() => setShowVisualization(false)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-all duration-300">
+                  ← Back
+                </button>
+                {me && (
+                  <div className="text-right pr-4 border-r border-gray-200">
+                    <div className="text-sm font-semibold text-gray-900">{me.name || 'Administrator'}</div>
+                    <div className="text-xs text-gray-500">{me.email}</div>
+                  </div>
+                )}
+                <button onClick={onLogout} className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
         </header>
         <DataVisualization />
@@ -84,21 +110,34 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (showReports) {
     return (
-      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
-        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-          </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <button onClick={() => setShowReports(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
-            {me && (
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
-                <div style={{ fontSize: 13 }}>{me.email}</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-yellow-400 flex items-center justify-center shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Trendlytic</span>
               </div>
-            )}
-            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+              <div className="flex gap-4 items-center">
+                <button onClick={() => setShowReports(false)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-all duration-300">
+                  ← Back
+                </button>
+                {me && (
+                  <div className="text-right pr-4 border-r border-gray-200">
+                    <div className="text-sm font-semibold text-gray-900">{me.name || 'Administrator'}</div>
+                    <div className="text-xs text-gray-500">{me.email}</div>
+                  </div>
+                )}
+                <button onClick={onLogout} className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
         </header>
         <Reports />
@@ -108,21 +147,34 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (showUserManagement) {
     return (
-      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
-        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-          </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <button onClick={() => setShowUserManagement(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
-            {me && (
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
-                <div style={{ fontSize: 13 }}>{me.email}</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-yellow-400 flex items-center justify-center shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Trendlytic</span>
               </div>
-            )}
-            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+              <div className="flex gap-4 items-center">
+                <button onClick={() => setShowUserManagement(false)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-all duration-300">
+                  ← Back
+                </button>
+                {me && (
+                  <div className="text-right pr-4 border-r border-gray-200">
+                    <div className="text-sm font-semibold text-gray-900">{me.name || 'Administrator'}</div>
+                    <div className="text-xs text-gray-500">{me.email}</div>
+                  </div>
+                )}
+                <button onClick={onLogout} className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
         </header>
         <UserManagement />
@@ -132,21 +184,34 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (showReports) {
     return (
-      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
-        <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-            <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-          </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <button onClick={() => setShowReports(false)} style={{ padding: '8px 12px', borderRadius: 8, background: '#e5e7eb', color: '#111827', border: 'none', cursor: 'pointer' }}>← Back</button>
-            {me && (
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
-                <div style={{ fontSize: 13 }}>{me.email}</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-yellow-400 flex items-center justify-center shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Trendlytic</span>
               </div>
-            )}
-            <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+              <div className="flex gap-4 items-center">
+                <button onClick={() => setShowReports(false)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-all duration-300">
+                  ← Back
+                </button>
+                {me && (
+                  <div className="text-right pr-4 border-r border-gray-200">
+                    <div className="text-sm font-semibold text-gray-900">{me.name || 'Administrator'}</div>
+                    <div className="text-xs text-gray-500">{me.email}</div>
+                  </div>
+                )}
+                <button onClick={onLogout} className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
         </header>
         <Reports />
@@ -155,64 +220,82 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
   }
 
   return (
-    <div style={{ fontFamily: 'Inter, system-ui, sans-serif', minHeight: '100vh', background: '#f8fafc' }}>
-      <header style={{ padding: '16px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg,#3b82f6,#06b6d4)' }} />
-          <strong style={{ fontSize: 18 }}>Trendlytic</strong>
-        </div>
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          {me && (
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 12, color: '#6b7280' }}>{me.name || 'Signed in'}</div>
-              <div style={{ fontSize: 13 }}>{me.email}</div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      {/* Modern Header */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-yellow-400 flex items-center justify-center shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                  <polyline points="16 7 22 7 22 13"></polyline>
+                </svg>
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Trendlytic</span>
             </div>
-          )}
-          <button onClick={onLogout} style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', color: 'white', border: 'none' }}>Logout</button>
+            <div className="flex gap-4 items-center">
+              {me && (
+                <div className="text-right pr-4 border-r border-gray-200">
+                  <div className="text-sm font-semibold text-gray-900">{me.name || 'Administrator'}</div>
+                  <div className="text-xs text-gray-500">{me.email}</div>
+                </div>
+              )}
+              <button onClick={onLogout} className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </header>
-      <main style={{ padding: 24 }}>
-        <style>{`
-          .module-grid, .stat-grid { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 16px; }
-          @media (max-width: 1100px) { .module-grid, .stat-grid { grid-template-columns: repeat(2, minmax(200px, 1fr)); } }
-          @media (max-width: 640px) { .module-grid, .stat-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); } }
-        `}</style>
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
-          <h1 style={{ margin: '16px 0 8px' }}>Welcome to Trendlytic</h1>
-          <p style={{ color: '#6b7280', marginTop: 0 }}>Select a module to start analyzing your research data</p>
-
-          <div className="module-grid">
-          {moduleCards.map((m) => (
-            <ModuleCard
-              key={m.title}
-              title={m.title}
-              subtitle={m.subtitle}
-              color={m.color}
-              onPrimary={
-                m.title === 'Data Ingestion'
-                  ? () => setShowUpload(true)
-                  : m.title === 'Trend Analysis'
-                  ? () => setShowTrends(true)
-                  : m.title === 'Visualization'
-                  ? () => setShowVisualization(true)
-                  : m.title === 'Reporting'
-                  ? () => setShowReports(true)
-                  : m.title === 'User Management'
-                  ? () => setShowUserManagement(true)
-                  : m.title === 'Setting'
-                  ? () => setShowSettings(true)
-                  : undefined
-              }
-              primaryText={m.title === 'Data Ingestion' ? 'Upload File' : m.title === 'Setting' ? 'Open Settings' : 'Open Module'}
-            />
-          ))}
+      <main className="py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Welcome Section */}
+          <div className="mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+              <span className="bg-gradient-to-r from-pink-600 to-yellow-500 bg-clip-text text-transparent">Welcome to Trendlytic</span>
+            </h1>
+            <p className="text-lg text-gray-600">Select a module to start analyzing your research data</p>
           </div>
 
-          <div className="stat-grid" style={{ marginTop: 24 }}>
-          <StatCard label="Total Papers" value={stats?.statistics?.total_papers ?? '—'} onClickValue={() => setListModal({ type: 'papers' })} />
-          <StatCard label="Total Authors" value={stats?.statistics?.total_authors ?? '—'} onClickValue={() => setListModal({ type: 'authors' })} />
-          <StatCard label="Total Keywords" value={stats?.statistics?.total_keywords ?? '—'} onClickValue={() => setListModal({ type: 'keywords' })} />
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <StatCard label="Total Papers" value={stats?.statistics?.total_papers ?? '—'} icon="📄" color="blue" onClickValue={() => setListModal({ type: 'papers' })} />
+            <StatCard label="Total Authors" value={stats?.statistics?.total_authors ?? '—'} icon="👥" color="purple" onClickValue={() => setListModal({ type: 'authors' })} />
+            <StatCard label="Total Keywords" value={stats?.statistics?.total_keywords ?? '—'} icon="🏷️" color="pink" onClickValue={() => setListModal({ type: 'keywords' })} />
+          </div>
+
+          {/* Module Grid */}
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Modules</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {moduleCards.map((m) => (
+                <ModuleCard
+                  key={m.title}
+                  title={m.title}
+                  subtitle={m.subtitle}
+                  color={m.color}
+                  icon={m.icon}
+                  onPrimary={
+                    m.title === 'Data Ingestion'
+                      ? () => setShowUpload(true)
+                      : m.title === 'Trend Analysis'
+                      ? () => setShowTrends(true)
+                      : m.title === 'Visualization'
+                      ? () => setShowVisualization(true)
+                      : m.title === 'Reporting'
+                      ? () => setShowReports(true)
+                      : m.title === 'User Management'
+                      ? () => setShowUserManagement(true)
+                      : m.title === 'Settings'
+                      ? () => setShowSettings(true)
+                      : undefined
+                  }
+                  primaryText={m.title === 'Data Ingestion' ? 'Upload File' : m.title === 'Settings' ? 'Open Settings' : 'Open Module'}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </main>
@@ -241,7 +324,7 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
       )}
 
       {toast && (
-        <div style={{ position: 'fixed', right: 16, bottom: 16, background: '#10b981', color: 'white', padding: '12px 14px', borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)' }}>
+        <div className="fixed bottom-6 right-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-4 rounded-xl shadow-2xl font-semibold animate-pulse">
           {toast}
         </div>
       )}
@@ -253,33 +336,57 @@ export function Dashboard({ onLogout }: { onLogout: () => void }) {
   );
 }
 
-function ModuleCard({ title, subtitle, color, onPrimary, primaryText }: { title: string; subtitle: string; color: string; onPrimary?: () => void; primaryText?: string }) {
+function ModuleCard({ title, subtitle, color, onPrimary, primaryText, icon }: { title: string; subtitle: string; color: string; onPrimary?: () => void; primaryText?: string; icon?: string }) {
   return (
-    <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: 16, boxShadow: '0 1px 2px rgba(0,0,0,0.03)' }}>
-      <div style={{ width: 44, height: 44, borderRadius: 12, background: color, marginBottom: 12 }} />
-      <div style={{ fontWeight: 600 }}>{title}</div>
-      <div style={{ color: '#6b7280', fontSize: 13 }}>{subtitle}</div>
-      <button onClick={onPrimary} style={{ marginTop: 12, width: '100%', padding: '8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#f9fafb', cursor: 'pointer' }}>{primaryText ?? 'Open Module'}</button>
+    <div className="group relative bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-pink-300 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer">
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-yellow-50 opacity-0 group-hover:opacity-50 rounded-2xl transition-opacity duration-300" />
+      <div className="relative z-10">
+        <div className="text-5xl mb-4">{icon}</div>
+        <div className="inline-block px-3 py-1 bg-gradient-to-r from-pink-100 to-yellow-100 rounded-full mb-4">
+          <span className="text-sm font-semibold bg-gradient-to-r from-pink-600 to-yellow-500 bg-clip-text text-transparent">{title}</span>
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+        <p className="text-gray-600 text-sm mb-6 leading-relaxed">{subtitle}</p>
+        <button onClick={onPrimary} className="w-full py-3 px-4 bg-gradient-to-r from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg transform group-hover:scale-105">
+          {primaryText ?? 'Open Module'}
+        </button>
+      </div>
     </div>
   );
 }
 
-function StatCard({ label, value, onClickValue }: { label: string; value: any; onClickValue?: () => void }) {
+function StatCard({ label, value, onClickValue, icon, color }: { label: string; value: any; onClickValue?: () => void; icon?: string; color?: string }) {
+  const colorClasses = {
+    blue: 'from-blue-500 to-blue-600',
+    purple: 'from-purple-500 to-purple-600',
+    pink: 'from-pink-500 to-rose-600',
+    green: 'from-green-500 to-emerald-600'
+  };
+  
+  const bgColor = color && colorClasses[color as keyof typeof colorClasses] ? colorClasses[color as keyof typeof colorClasses] : 'from-gray-500 to-gray-600';
+  
   return (
-    <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: 16 }}>
-      <div style={{ color: '#6b7280', fontSize: 12 }}>{label}</div>
-      <div style={{ fontSize: 24, fontWeight: 700, cursor: onClickValue ? 'pointer' : 'default', color: onClickValue ? '#2563eb' : undefined }} onClick={onClickValue} title={onClickValue ? 'View details' : undefined}>{value}</div>
+    <div className={`relative bg-white rounded-2xl p-8 border-2 border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 ${onClickValue ? 'cursor-pointer hover:border-gray-300' : ''}`} onClick={onClickValue}>
+      <div className={`absolute top-6 right-6 w-12 h-12 rounded-xl bg-gradient-to-br ${bgColor} flex items-center justify-center text-2xl shadow-md`}>
+        {icon}
+      </div>
+      <div className="mb-6">
+        <div className="text-gray-600 text-sm font-semibold">{label}</div>
+      </div>
+      <div className={`text-5xl font-bold ${onClickValue ? 'text-transparent bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text' : 'text-gray-900'}`}>
+        {value}
+      </div>
     </div>
   );
 }
 
 const moduleCards = [
-  { title: 'Data Ingestion', subtitle: 'Import and process research data', color: 'linear-gradient(135deg,#60a5fa,#93c5fd)' },
-  { title: 'Trend Analysis', subtitle: 'Identify patterns and trends', color: 'linear-gradient(135deg,#34d399,#6ee7b7)' },
-  { title: 'Visualization', subtitle: 'Interactive data visualizations', color: 'linear-gradient(135deg,#fb923c,#fdba74)' },
-  { title: 'Reporting', subtitle: 'Generate comprehensive reports', color: 'linear-gradient(135deg,#a78bfa,#c4b5fd)' },
-  { title: 'User Management', subtitle: 'Manage team and permissions', color: 'linear-gradient(135deg,#f43f5e,#fb7185)' },
-  { title: 'Setting', subtitle: 'Configure system preferences', color: 'linear-gradient(135deg,#64748b,#94a3b8)' },
+  { title: 'Data Ingestion', subtitle: 'Import and process research data', color: 'linear-gradient(135deg,#60a5fa,#93c5fd)', icon: '📁' },
+  { title: 'Trend Analysis', subtitle: 'Identify patterns and trends', color: 'linear-gradient(135deg,#34d399,#6ee7b7)', icon: '📈' },
+  { title: 'Visualization', subtitle: 'Interactive data visualizations', color: 'linear-gradient(135deg,#fb923c,#fdba74)', icon: '📊' },
+  { title: 'Reporting', subtitle: 'Generate comprehensive reports', color: 'linear-gradient(135deg,#a78bfa,#c4b5fd)', icon: '📋' },
+  { title: 'User Management', subtitle: 'Manage team and permissions', color: 'linear-gradient(135deg,#f43f5e,#fb7185)', icon: '👥' },
+  { title: 'Settings', subtitle: 'Configure system preferences', color: 'linear-gradient(135deg,#64748b,#94a3b8)', icon: '⚙️' },
 ];
 
  function UploadModal({ onClose, onSuccess }: { onClose: () => void; onSuccess: (summary: { inserted: number; skipped: number; total: number }) => void }) {
@@ -336,8 +443,8 @@ const moduleCards = [
   }
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-      <div style={{ position: 'relative', background: 'white', padding: 24, borderRadius: 12, width: 720, maxHeight: '80vh', overflow: 'auto' }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, zIndex: 9999 }}>
+      <div style={{ position: 'relative', background: 'white', padding: 24, borderRadius: 12, width: 720, maxHeight: '80vh', overflow: 'auto', zIndex: 10000 }}>
         <h3 style={{ marginTop: 0 }}>Upload Papers (CSV/XLSX)</h3>
         <p style={{ color: '#6b7280' }}>Required columns: title, authors, year, keywords, conference</p>
         <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
@@ -428,8 +535,8 @@ function SettingsModal({ onClose, onCleared }: { onClose: () => void; onCleared:
   }
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-      <div style={{ position: 'relative', background: 'white', padding: 24, borderRadius: 12, width: 560 }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, zIndex: 9999 }}>
+      <div style={{ position: 'relative', background: 'white', padding: 24, borderRadius: 12, width: 560, zIndex: 10000 }}>
         <h3 style={{ marginTop: 0 }}>Settings</h3>
         <p style={{ color: '#6b7280', marginTop: 0 }}>Maintenance actions. Use with caution.</p>
 
@@ -481,8 +588,8 @@ function ListModal({ type, onClose }: { type: 'papers' | 'authors' | 'keywords';
   const title = type === 'papers' ? 'Papers' : type === 'authors' ? 'Authors' : 'Keywords';
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-      <div style={{ background: 'white', padding: 20, borderRadius: 12, width: 900, maxHeight: '80vh', overflow: 'auto' }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, zIndex: 9999 }}>
+      <div style={{ background: 'white', padding: 20, borderRadius: 12, width: 900, maxHeight: '80vh', overflow: 'auto', zIndex: 10000 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <h3 style={{ margin: 0 }}>{title}</h3>
           <button onClick={onClose} style={{ padding: '6px 10px', borderRadius: 8, border: '1px solid #e5e7eb', background: 'white' }}>Close</button>
